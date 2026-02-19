@@ -546,6 +546,37 @@
       margin: 0 60px;
     }
 
+    /* SERVICE TABS */
+    .service-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 40px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      width: fit-content;
+    }
+    .service-tab {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      padding: 14px 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-right: 1px solid var(--border);
+    }
+    .service-tab:last-child { border-right: none; }
+    .service-tab.active {
+      background: var(--gold);
+      color: var(--black);
+      font-weight: 500;
+    }
+    .service-tab:not(.active):hover { color: var(--white); background: rgba(255,255,255,0.05); }
+
     @media (max-width: 900px) {
       nav { padding: 20px 24px; }
       nav ul { display: none; }
@@ -568,7 +599,7 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="/" class="logo">Jupi<span>trend</span></a>
+  <a href="/" class="logo"><img src="logo.png" alt="Jupitrend" style="height:44px;width:auto;display:block;" /></a>
   <ul>
     <li><a href="#how">How It Works</a></li>
     <li><a href="#services">Services</a></li>
@@ -582,9 +613,9 @@
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-badge">Amazon US Wholesale Partner</div>
-    <h1>We grow your brand<br>on <em>Amazon.</em></h1>
-    <p class="hero-sub">Jupitrend LLC handles authorized distribution, MAP protection, and Buy Box dominance — so your brand wins the marketplace.</p>
+    <div class="hero-badge">Amazon Wholesale · Business Automation</div>
+    <h1>We grow brands &<br>automate <em>businesses.</em></h1>
+    <p class="hero-sub">Jupitrend LLC is a Delaware-registered Amazon wholesale partner and a business automation studio building AI-powered n8n workflows.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Partner With Us</a>
       <a href="#how" class="btn-secondary">See how it works →</a>
@@ -658,9 +689,16 @@
 <!-- SERVICES -->
 <section id="services" class="offer-section">
   <div class="section-label reveal">Services</div>
-  <h2 class="reveal">What we bring<br>to the table</h2>
-  <p class="section-intro reveal">Every service designed to protect your brand equity and maximize your Amazon revenue.</p>
-  <div class="offer-grid">
+  <h2 class="reveal">Two pillars,<br>one partner</h2>
+  <p class="section-intro reveal">Amazon wholesale distribution and business automation — built for brands and companies ready to scale.</p>
+
+  <!-- Service toggle tabs -->
+  <div class="service-tabs reveal">
+    <button class="service-tab active" onclick="switchTab('wholesale')">Amazon Wholesale</button>
+    <button class="service-tab" onclick="switchTab('automation')">Business Automation</button>
+  </div>
+
+  <div id="tab-wholesale" class="offer-grid tab-content">
     <div class="offer-card reveal">
       <div class="offer-icon">
         <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
@@ -688,6 +726,37 @@
       </div>
       <h3>Sales Analytics & Reporting</h3>
       <p>Monthly performance reports with click share, conversion trends, competitor analysis, and revenue attribution. Full transparency, always.</p>
+    </div>
+  </div>
+
+  <div id="tab-automation" class="offer-grid tab-content" style="display:none;">
+    <div class="offer-card reveal">
+      <div class="offer-icon">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+      </div>
+      <h3>n8n Workflow Automation</h3>
+      <p>We build custom n8n workflows that automate your repetitive business processes — lead generation, CRM updates, email campaigns, reporting, and more.</p>
+    </div>
+    <div class="offer-card reveal">
+      <div class="offer-icon">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      </div>
+      <h3>AI Agent Development</h3>
+      <p>We design and deploy AI agents powered by Claude, GPT, and open-source models — for customer support, data extraction, sales outreach, and decision automation.</p>
+    </div>
+    <div class="offer-card reveal">
+      <div class="offer-icon">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      </div>
+      <h3>Automated Outreach Systems</h3>
+      <p>Data-driven email and LinkedIn outreach pipelines with smart segmentation, personalization, and CRM logging — fully automated from lead to reply.</p>
+    </div>
+    <div class="offer-card reveal">
+      <div class="offer-icon">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>
+      </div>
+      <h3>API & System Integration</h3>
+      <p>We connect your existing tools — Shopify, WooCommerce, Google Sheets, Slack, Airtable, and 400+ other platforms — into unified automated pipelines.</p>
     </div>
   </div>
 </section>
@@ -834,7 +903,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <a href="/" class="footer-logo">Jupi<span>trend</span> LLC</a>
+  <a href="/"><img src="logo.png" alt="Jupitrend LLC" style="height:36px;width:auto;display:block;" /></a>
   <div class="footer-copy">© 2025 Jupitrend LLC. All rights reserved. Delaware LLC · NJ Reseller Certified</div>
   <div class="footer-links">
     <a href="mailto:info@jupitrend.com">info@jupitrend.com</a>
@@ -843,6 +912,14 @@
 </footer>
 
 <script>
+  // Service tabs
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.service-tab').forEach(el => el.classList.remove('active'));
+    document.getElementById('tab-' + tab).style.display = 'grid';
+    event.target.classList.add('active');
+  }
+
   // Navbar scroll
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
