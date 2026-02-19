@@ -95,6 +95,14 @@
     }
     .nav-cta:hover { background: var(--gold-light) !important; }
 
+    .logo-llc {
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      margin-left: 2px;
+    }
+
     /* HERO */
     .hero {
       min-height: 100vh;
@@ -136,7 +144,6 @@
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 40px;
-      animation: fadeUp 0.8s ease both;
     }
     .hero-badge::before {
       content: '';
@@ -200,7 +207,8 @@
       right: 60px;
       bottom: 80px;
       display: flex;
-      gap: 48px;
+      flex-direction: column;
+      gap: 32px;
       animation: fadeUp 0.8s 0.4s ease both;
     }
     .stat { text-align: right; }
@@ -639,7 +647,7 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="/" class="logo">Jupi<span>trend</span></a>
+  <a href="/" class="logo">Jupi<span>trend</span> LLC</a>
   <ul>
     <li><a href="#how">How It Works</a></li>
     <li><a href="#services">Services</a></li>
@@ -976,11 +984,11 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0, rootMargin: '0px' });
   reveals.forEach(el => observer.observe(el));
 
   // Form submit
